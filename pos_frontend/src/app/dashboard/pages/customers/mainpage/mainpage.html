@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col-md-12">
+            <app-heading headingTxt="Manage Your Customers." />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 my-2">
+            <div class="card shadow-md p-4 font-bold text-[22px] text-center">
+                <a [routerLink]="['/admin/customer/onpagereport']">
+                    On Report Page (Customer Filter)
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4 my-2">
+            <div class="card shadow-md p-4 font-bold text-[22px] text-center">
+                <a [routerLink]="['/admin/customer/agingreport']">
+                    Customer Aging Report
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

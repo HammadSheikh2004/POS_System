@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div
+            class="col-md-12 d-flex justify-content-center align-items-center h-[600px]">
+            <div class="card background p-[10px] w-[600px]">
+                <div class="card-body text-center">
+                    <img [src]="storeImage"
+                        class="mx-auto bg-[#FFFFFF] rounded-full" width="100px"
+                        height="100px" alt="Store Image">
+                    <h5 class="card-title text text-[25px] mt-2">Welcome to our
+                        POS</h5>
+                    <p class="card-text text text-[20px] my-2">Manage your
+                        sales,
+                        inventory, and customers
+                        with ease.</p>
+                    <p class="card-text text text-[17px] my-2">Please Sign In to
+                        continue</p>
+
+                    <form [formGroup]="signinForm" class="mb-3">
+                        <div class="mb-3 border border-gray-300">
+                            <app-input-elements
+                                [control]="userNameControl"
+                                [label]="'User Name'"
+                                [type]="'text'"
+                                [placeholder]="'Enter your User Name'" />
+                        </div>
+                        <div class="my-2">
+                            @if(signinForm.get('userName')?.touched &&
+                            signinForm.get('userName')?.invalid){
+                            <p class="text-red-600 text-start">User Name is
+                                required.</p>
+                            }
+                        </div>
+
+                        <div class="mb-3 border border-gray-300">
+                            <app-input-elements
+                                [control]="passwordControl"
+                                [type]="'password'"
+                                [label]="'Password'"
+                                [placeholder]="'Enter your Password'" />
+                        </div>
+                        <div class="my-2">
+                            @if(signinForm.get('password')?.touched &&
+                            signinForm.get('password')?.invalid){
+                            <p class="text-red-600 text-start">Password is
+                                required.</p>
+                            }
+                        </div>
+                        <app-button-element [disable]="signinForm.invalid"
+                            [label]="loading ? 'Loading...': 'Submit'" (btnClick)="onSubmit()" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

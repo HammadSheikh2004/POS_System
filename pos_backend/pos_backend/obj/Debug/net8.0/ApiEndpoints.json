@@ -1,0 +1,377 @@
+[
+  {
+    "ContainingType": "pos_backend.Controllers.AuthController",
+    "Method": "Signin",
+    "RelativePath": "api/Auth/Signin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signinDtos",
+        "Type": "Domain.DTOs.SigninDtos",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.AuthController",
+    "Method": "GetUsersDetails",
+    "RelativePath": "api/Auth/UsersDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.CustomerController",
+    "Method": "CustomerAgingReport",
+    "RelativePath": "api/Customer/CustomerAgingReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.CustomerController",
+    "Method": "OnPageReport",
+    "RelativePath": "api/Customer/OnPageReport/{first_date}/{sec_date}/{customerName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "first_date",
+        "Type": "System.DateOnly",
+        "IsRequired": true
+      },
+      {
+        "Name": "sec_date",
+        "Type": "System.DateOnly",
+        "IsRequired": true
+      },
+      {
+        "Name": "customerName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.EnumController",
+    "Method": "GetPaymentMethod",
+    "RelativePath": "api/Enum/GetPaymentMethod",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.EnumController",
+    "Method": "GetPaymentStatus",
+    "RelativePath": "api/Enum/GetPaymentStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "AddInventory",
+    "RelativePath": "api/Inventory/AddInventory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productDTOs",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.DTOs.ProductDTOs, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "AddPurchaseOrder",
+    "RelativePath": "api/Inventory/AddPurchaseOrder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "poDtos",
+        "Type": "Domain.DTOs.PODTOs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "DeletePO",
+    "RelativePath": "api/Inventory/DeletePO/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "DeleteProduct",
+    "RelativePath": "api/Inventory/DeleteProduct/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "FetcAllProducts",
+    "RelativePath": "api/Inventory/FetchAllProducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "FetchAllPurchaseOrders",
+    "RelativePath": "api/Inventory/FetchAllPurchaseOrders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "FetchProductsById",
+    "RelativePath": "api/Inventory/FetchProductsById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "FetchProductsName",
+    "RelativePath": "api/Inventory/FetchProductsName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "GetPOById",
+    "RelativePath": "api/Inventory/GetPOById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "UpdatePO",
+    "RelativePath": "api/Inventory/UpdatePO/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "poDto",
+        "Type": "Domain.DTOs.PODTOs",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.InventoryController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Inventory/UpdateProduct/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productDTOs",
+        "Type": "Domain.DTOs.FetchProductDTOs",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "AddSale",
+    "RelativePath": "api/Sale/AddSale",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "saleDtos",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.DTOs.SaleDto, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "CustomerSaleHistoryReport",
+    "RelativePath": "api/Sale/CustomerSaleHistoryReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "DailySaleReport",
+    "RelativePath": "api/Sale/DailySaleReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "GetAllSale",
+    "RelativePath": "api/Sale/GetAllSale",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "GetSaleById",
+    "RelativePath": "api/Sale/GetSaleById/{SaleId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SaleId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "MonthlySaleReport",
+    "RelativePath": "api/Sale/MonthlySaleReport/{month}/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "month",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "ProductWiseSaleReport",
+    "RelativePath": "api/Sale/ProductWiseSaleReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "TodaySaleReport",
+    "RelativePath": "api/Sale/TodaySaleReport/{todayDate}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "todayDate",
+        "Type": "System.DateOnly",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "pos_backend.Controllers.SaleController",
+    "Method": "YearlySaleReport",
+    "RelativePath": "api/Sale/YearlySaleReport/{year}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

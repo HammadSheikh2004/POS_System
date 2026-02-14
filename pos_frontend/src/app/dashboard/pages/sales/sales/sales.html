@@ -1,0 +1,283 @@
+<style>
+    .tableClass{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+ 
+
+.suggestion-box {
+  position: static;         /* normal flow me aayega */
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  margin-top: 4px;
+  padding: 0;
+}
+
+
+/* Suggestion Items */
+.suggestion-item {
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 8px 12px;
+}
+
+.suggestion-item:hover {
+  background: #f7f7f7;
+}
+
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 my-2">
+            <app-heading headingTxt="Manage Your Sales Here." />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <a [routerLink]="['/admin/sales/dailysalereport']">
+                <div class="alert alert-secondary" role="alert">
+                    Daily Sale Report
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a [routerLink]="['/admin/sales/customersalereport']">
+                <div class="alert alert-secondary" role="alert">
+                    Customer Sale Report
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a [routerLink]="['/admin/sales/productwisesalereport']">
+                <div class="alert alert-secondary" role="alert">
+                    Product Wise Sale Report
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" (click)="PrintTodayReport()">
+                <div class="alert alert-secondary" role="alert">
+                    Print Today's Sale
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="SaleForm" (submit)="OnSubmit()">
+        <div class="row">
+            <div class="col-md-4 my-2">
+                <div class="card p-2 shadow-sm"
+                    [ngClass]="{'pb-5': show_suggestion && filtered_customer().length > 0}">
+
+                    <app-heading headingTxt="Customer Details" />
+                    <div class="table-responsive my-2">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Customer Number</th>
+                                    <th scope="col">Customer Address</th>
+                                </tr>
+                            </thead>
+                            <tbody formGroupName="customer">
+                                <tr class>
+                                    <td class="position-relative">
+                                        <input type="text"
+                                            class="form-control"
+                                            formControlName="CustomerName"
+                                            (focus)="show_suggestion = true">
+
+                                        @if (show_suggestion &&
+                                        filtered_customer().length > 0) {
+                                        <ul class="list-group suggestion-box">
+                                            @for (item of filtered_customer();
+                                            track $index) {
+                                            <li
+                                                class="list-group-item suggestion-item"
+                                                (click)="SelectCustomer(item)">
+                                                {{ item.customerName }}
+                                            </li>
+                                            }
+                                        </ul>
+                                        }
+                                    </td>
+
+                                    <td><input type="text"
+                                            class="form-control"
+                                            formControlName="CustomerNumber"></td>
+                                    <td><input type="text"
+                                            class="form-control"
+                                            formControlName="CustomerAddress"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8 my-2">
+                <div class="card p-2 shadow-sm">
+                    <app-heading headingTxt="Sale Details" />
+                    <div class="table-responsive my-2">
+
+                        <div id="salesTable">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sale Date</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Payment Status</th>
+                                        <th scope="col">Payment Method</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Unit Price</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody formArrayName="sales">
+                                    @for (row of rows(); track $index; let i =
+                                    $index){
+                                    <tr class="tr" [formGroupName]="i">
+                                        <td><input type="date"
+                                                class="form-control"
+                                                id="saleDate"
+                                                formControlName="saleDate"></td>
+                                        <td>
+                                            <select class="form-control"
+                                                formControlName="productId">
+                                                <option selected disabled>Select
+                                                    Product</option>
+                                                @if(products().length > 0){
+                                                @for (pro of products(); track
+                                                $index){
+                                                <option
+                                                    [ngValue]="pro.productId">{{pro.productName}}</option>
+                                                }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control"
+                                                formControlName="paymentStatus">
+                                                <option selected
+                                                    disabled>Payment
+                                                    Status</option>
+                                                @if(payment_status.length > 0){
+                                                @for (status of payment_status;
+                                                track
+                                                $index){
+                                                <option
+                                                    [value]="status.id">{{status.name}}</option>
+                                                }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control"
+                                                formControlName="paymentMethod">
+                                                <option selected
+                                                    disabled>Payment
+                                                    Method</option>
+                                                @for (method of payment_method;
+                                                track
+                                                $index){
+                                                <option
+                                                    [value]="method.id">{{method.name}}</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td><input type="number"
+                                                class="form-control"
+                                                id="quantity"
+                                                (input)="TotalPrice()"
+                                                formControlName="quantity"></td>
+                                        <td><input type="number"
+                                                class="form-control"
+                                                id="uint_price"
+                                                (input)="TotalPrice()"
+                                                formControlName="unitPrice"></td>
+
+                                        <td class="flex gap-2 mb-2">
+                                            <button type="button"
+                                                class="btn btn-success btn-sm"
+                                                (click)="AddRow($event)">+</button>
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm"
+                                                (click)="DeleteRow(i)">-</button>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                                <tfoot
+                                    class="sticky bottom-0 bg-light border-top"
+                                    id="tableFooter">
+                                    <tr>
+                                        <td colspan="3" class="py-3">
+                                            <button class="btn btn-primary px-4"
+                                                type="submit">
+                                                Submit
+                                            </button>
+                                        </td>
+
+                                        <!-- Total -->
+                                        <td colspan="0" class="text-end py-3">
+                                            <label
+                                                class="fw-bold me-2">Total:</label>
+                                            <input
+                                                type="number"
+                                                class="form-control d-inline-block w-55 text-end bg-white fw-bold"
+                                                id="total_price"
+                                                readonly
+                                                [value]="total"
+                                                placeholder="0"
+                                                formControlName="totalPrice" />
+                                        </td>
+
+                                        <!-- Amount Pay -->
+                                        <td colspan="0" class="text-end py-3">
+                                            <label class="fw-bold me-2">Amount
+                                                Pay:</label>
+                                            <input
+                                                type="number"
+                                                class="form-control d-inline-block w-55 text-end"
+                                                id="amount_pay"
+                                                formControlName="AmountPay"
+                                                (input)="CalculateDueAmount()" />
+                                        </td>
+
+                                        <!-- Due Amount -->
+                                        <td colspan="0" class="text-end py-3">
+                                            <label
+                                                class="fw-bold me-2 text-danger">Due
+                                                Amount:</label>
+                                            <input
+                                                type="number"
+                                                class="form-control d-inline-block w-55 text-end text-danger fw-bold"
+                                                readonly
+                                                formControlName="DueAmount"
+                                                placeholder="0" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-12 my-2">
+            <app-displaysales />
+        </div>
+    </div>
+</div>

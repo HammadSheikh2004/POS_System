@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "hApBpFqlBwQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\muhammad hammad\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
+    "C:\\Users\\muhammad hammad\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
+    "C:\\Users\\muhammad hammad\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.8\\microsoft.extensions.dependencyinjection.abstractions.9.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}
