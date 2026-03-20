@@ -17,12 +17,12 @@
                         continue</p>
 
                     <form [formGroup]="signinForm" class="mb-3">
-                        <div class="mb-3 border border-gray-300">
+                        <div class="mb-3 border rounded border-gray-300">
                             <app-input-elements
                                 [control]="userNameControl"
                                 [label]="'User Name'"
                                 [type]="'text'"
-                                [placeholder]="'Enter your User Name'" />
+                                [placeholder]="'Enter User Name'" />
                         </div>
                         <div class="my-2">
                             @if(signinForm.get('userName')?.touched &&
@@ -32,12 +32,12 @@
                             }
                         </div>
 
-                        <div class="mb-3 border border-gray-300">
+                        <div class="mb-3 border rounded border-gray-300">
                             <app-input-elements
                                 [control]="passwordControl"
                                 [type]="'password'"
                                 [label]="'Password'"
-                                [placeholder]="'Enter your Password'" />
+                                [placeholder]="'Enter Password'" />
                         </div>
                         <div class="my-2">
                             @if(signinForm.get('password')?.touched &&

@@ -1,10 +1,15 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-        <a class="navbar-brand" href="#">Dashboard</a>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 p-0">
-            <li class="nav-item">
-                <button class="btn btn-primary" (click)="logout()">Logout</button>
-            </li>
-        </ul>
-    </div>
-</nav>
+
+<header class="flex justify-between items-center shadow bg-white p-4 lg:static">
+
+  <fa-icon class="lg:hidden cursor-pointer text-2xl font-bold"
+    [icon]="faBars"
+    (click)="menuClick.emit()">
+  </fa-icon>
+
+  <h3 class="font-bold text-2xl">Dashboard</h3>
+
+  <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded" (click)="logout()">
+    Logout
+  </button>
+
+</header>

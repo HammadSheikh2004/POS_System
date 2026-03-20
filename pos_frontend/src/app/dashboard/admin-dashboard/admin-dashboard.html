@@ -1,44 +1,40 @@
-<style>
-#doughnut{
-    width: 350px !important;
-    height: 350px !important;
-}
-@media (max-width: 768px) {
-    #doughnut{
-        width: 250px !important;
-        height: 250px !important;
-    }
-}
-</style>
-<div class="container">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
 
-    <div class="row my-4">
-        <div class="col-md-6">
-            <canvas baseChart [data]="chartData" [options]="chartOptions"
-                [type]="chartType"></canvas>
-        </div>
-        <div class="col-md-6">
-            <canvas id="doughnut"
-                baseChart
-                [data]="pieChartData"
-                [options]="pieChartOptions"
-                [type]="'doughnut'">
-            </canvas>
-        </div>
-    </div>
+  <div>
+    <canvas class="max-h-[300px]"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType">
+    </canvas>
+  </div>
 
-    <div class="row my-4">
-        <div class="col-md-4 my-2">
-            <app-cards cardTitle="Inventory Management" [icon]="trollyIcon"
-                navigate="/admin/inventory" />
-        </div>
-        <div class="col-md-4 my-2">
-            <app-cards cardTitle="Sales Management" [icon]="salesIcon"
-                navigate="/admin/sales" />
-        </div>
-        <div class="col-md-4 my-2">
-            <app-cards cardTitle="Customer Management" [icon]="customerIcon"
-                navigate="/admin/customer/mainpage" />
-        </div>
-    </div>
+  <div>
+    <canvas class="max-h-[300px]"
+      baseChart
+      [data]="pieChartData"
+      [options]="pieChartOptions"
+      [type]="'doughnut'">
+    </canvas>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+
+  <app-cards cardTitle="Inventory Management"
+    [icon]="trollyIcon"
+    navigate="/admin/inventory">
+  </app-cards>
+
+  <app-cards cardTitle="Sales Management"
+    [icon]="salesIcon"
+    navigate="/admin/sales">
+  </app-cards>
+
+  <app-cards cardTitle="Customer Management"
+    [icon]="customerIcon"
+    navigate="/admin/customer/mainpage">
+  </app-cards>
+
 </div>

@@ -149,3 +149,4 @@ C:\Users\muhammad hammad\Pictures\POS_System\pos_backend\pos_backend\obj\Debug\n
 C:\Users\muhammad hammad\Pictures\POS_System\pos_backend\pos_backend\obj\Debug\net10.0\pos_backend.pdb
 C:\Users\muhammad hammad\Pictures\POS_System\pos_backend\pos_backend\obj\Debug\net10.0\pos_backend.genruntimeconfig.cache
 C:\Users\muhammad hammad\Pictures\POS_System\pos_backend\pos_backend\obj\Debug\net10.0\ref\pos_backend.dll
+C:\Users\muhammad hammad\Pictures\POS_System\pos_backend\pos_backend\obj\Debug\net10.0\pos_backend.sourcelink.json
