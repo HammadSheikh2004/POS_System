@@ -16,6 +16,10 @@ steps:
     version: '10.0'
 
 # Restore
+- task: DotNetCoreCLI@2
+  inputs:
+    azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
+    command: 'build'
 - script: dotnet restore pos_backend
   displayName: 'Restore Backend'
 
