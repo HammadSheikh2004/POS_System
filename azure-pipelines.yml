@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'pos_agent'  
+  name: pos_agent  
 
 variables:
   buildConfiguration: 'Release'
