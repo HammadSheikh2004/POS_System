@@ -2,13 +2,12 @@ trigger:
 - main
 
 pool:
-  name: 'pos_agent'
+  name: pos_agent
 
 variables:
   buildConfiguration: 'Release'
 
 steps:
-
 # Install .NET SDK
 - task: UseDotNet@2
   inputs:
@@ -41,3 +40,13 @@ steps:
     azureSubscription: 'pos_connection'   
     appName: 'pos-web-api'
     package: '$(Build.ArtifactStagingDirectory)'
+- task: AzureRmWebAppDeployment@5
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
+    appType: 'apiApp'
+    WebAppName: 'pos_service'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'pos-web-api'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'    
