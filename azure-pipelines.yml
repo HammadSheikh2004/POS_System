@@ -39,5 +39,5 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'pos_connection'   
-    appName: 'pos_web_api'
+    appName: 'pos-web-api'
     package: '$(Build.ArtifactStagingDirectory)'
