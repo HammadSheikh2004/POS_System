@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: pos
+  name: pos_agent
 
 variables:
   buildConfiguration: 'Release'
