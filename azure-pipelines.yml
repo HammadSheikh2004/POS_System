@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: pos_agent
+  vmImage: 'windows-latest'
 
 variables:
   buildConfiguration: 'Release'
