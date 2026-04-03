@@ -7,46 +7,63 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
-# Install .NET SDK
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '10.x'
+stages:
+- stage: Build
+  displayName: 'Build'
+  jobs: 
+  - job: Buildjob
+    displayName: 'Build Job'
+    steps:
+      # Install .NET SDK
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'sdk'
+          version: '10.x'
 
-# Restore
-- task: DotNetCoreCLI@2
-  inputs:
-    azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
-    command: 'build'
-- script: dotnet restore pos_backend
-  displayName: 'Restore Backend'
+      # Restore
+      - task: DotNetCoreCLI@2
+        inputs:
+          azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
+          command: 'build'
+      - script: dotnet restore pos_backend
+        displayName: 'Restore Backend'
 
-# Build
-- script: dotnet build pos_backend --configuration $(buildConfiguration)
-  displayName: 'Build Backend'
+      # Build
+      - script: dotnet build pos_backend --configuration $(buildConfiguration)
+        displayName: 'Build Backend'
 
-# Publish
-- script: dotnet publish pos_backend --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
-  displayName: 'Publish Backend'
+      # Publish
+      - script: dotnet publish pos_backend --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+        displayName: 'Publish Backend'
 
-# Artifact
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'pos_connection'   
-    appName: 'pos-web-api'
-    package: '$(Build.ArtifactStagingDirectory)'
-- task: AzureRmWebAppDeployment@5
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
-    appType: 'apiApp'
-    WebAppName: 'pos_service'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'pos-web-api'
-    SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'    
+      # Artifact
+      - task: PublishBuildArtifacts@1
+        inputs:
+          pathToPublish: '$(Build.ArtifactStagingDirectory)'
+          artifactName: 'drop'
+
+      - task: PublishBuildArtifacts@1
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
+
+- stage: Deploy
+  displayName: 'Deploy Stage'
+  jobs:
+    - job: DeployJob
+      displayName: 'Deploy Job'
+      steps:       
+        - task: DownloadBuildArtifacts@1
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            downloadPath: '$(System.ArtifactsDirectory)'
+
+        - task: AzureRmWebAppDeployment@5
+          inputs:
+            ConnectionType: 'AzureRM'
+            azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
+            appType: 'webApp'
+            WebAppName: 'pos-web-api'
+            packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
