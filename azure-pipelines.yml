@@ -33,6 +33,15 @@ stages:
       - script: dotnet publish pos_backend/pos_backend/pos_backend.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
         displayName: 'Publish Backend'
 
+     # ✅ ZIP BANAYEGA
+      - task: ArchiveFiles@2
+        inputs:
+            rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+            includeRootFolder: false
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+            replaceExistingArchive: true
+
       # ✅ Artifact (ONLY ONE)
       - task: PublishBuildArtifacts@1
         inputs:
@@ -59,19 +68,5 @@ stages:
             azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
             appType: 'webApp'
             WebAppName: 'pos-web-api'
-            package: '$(System.ArtifactsDirectory)/**/app.zip'
-
-        # ✅ ZIP BANAYEGA
-        - task: ArchiveFiles@2
-          inputs:
-            rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-            includeRootFolder: false
-            archiveType: 'zip'
-            archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
-            replaceExistingArchive: true
-
-        # ✅ Artifact publish
-        - task: PublishBuildArtifacts@1
-          inputs:
-            pathToPublish: '$(Build.ArtifactStagingDirectory)'
-            artifactName: 'drop'           
+            package: '$(System.ArtifactsDirectory)/drop/app.zip' 
+        
