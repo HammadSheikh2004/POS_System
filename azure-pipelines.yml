@@ -33,6 +33,10 @@ stages:
       - script: dotnet publish pos_backend/pos_backend/pos_backend.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
         displayName: 'Publish Backend'
 
+        # ✅ DEBUG (check files)
+      - script: dir $(Build.ArtifactStagingDirectory)
+        displayName: 'Check Files'
+
      # ✅ ZIP BANAYEGA
       - task: ArchiveFiles@2
         inputs:
