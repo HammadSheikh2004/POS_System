@@ -59,4 +59,4 @@ stages:
             azureSubscription: 'Azure for Students(3e106156-62e6-4695-a4c9-ab21ab8be451)'
             appType: 'webApp'
             WebAppName: 'pos-web-api'
-            package: '$(System.ArtifactsDirectory)/**/*.zip'
+            package: '$(System.ArtifactsDirectory)/**'
