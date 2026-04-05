@@ -60,3 +60,18 @@ stages:
             appType: 'webApp'
             WebAppName: 'pos-web-api'
             package: '$(System.ArtifactsDirectory)/**/app.zip'
+
+        # ✅ ZIP BANAYEGA
+        - task: ArchiveFiles@2
+          inputs:
+            rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+            includeRootFolder: false
+            archiveType: 'zip'
+            archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
+            replaceExistingArchive: true
+
+        # ✅ Artifact publish
+        - task: PublishBuildArtifacts@1
+          inputs:
+            pathToPublish: '$(Build.ArtifactStagingDirectory)'
+            artifactName: 'drop'           
