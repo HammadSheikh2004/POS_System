@@ -22,15 +22,15 @@ stages:
           version: '10.x'
 
       # ✅ Restore
-      - script: dotnet restore pos_backend/pos_backend.csproj
+      - script: dotnet restore pos_backend/pos_backend/pos_backend.csproj
         displayName: 'Restore Backend'
 
       # ✅ Build
-      - script: dotnet build pos_backend/pos_backend.csproj --configuration $(buildConfiguration)
+      - script: dotnet build pos_backend/pos_backend/pos_backend.csproj --configuration $(buildConfiguration)
         displayName: 'Build Backend'
 
       # ✅ Publish
-      - script: dotnet publish pos_backend/pos_backend.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+      - script: dotnet publish pos_backend/pos_backend/pos_backend.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
         displayName: 'Publish Backend'
 
       # ✅ Artifact (ONLY ONE)
