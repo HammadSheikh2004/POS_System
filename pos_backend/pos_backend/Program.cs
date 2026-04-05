@@ -49,6 +49,8 @@ namespace pos_backend
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
             app.UseCors("POS");
 
             app.UseHttpsRedirection();

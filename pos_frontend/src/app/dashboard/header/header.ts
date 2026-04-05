@@ -20,9 +20,5 @@ export class Header {
   @Output() menuClick = new EventEmitter<void>();
 
   faBars = faBars;
-  sideBarOpen = false;
 
-  toggleSidebar() {
-    this.sideBarOpen = !this.sideBarOpen;
-  }
 }
