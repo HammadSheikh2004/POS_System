@@ -5,37 +5,41 @@ trigger:
   paths:
     include:
       - pos_frontend/**
-      
+
 pool:
   name: pos_agent
 
 variables:
-  node_version: '20.x'
+  node_version: '20.x'   
 
 steps:
+
 # 1️⃣ Install Node
 - task: NodeTool@0
   inputs:
     versionSpec: '$(node_version)'
 
-# 2️⃣ Install dependencies
+# 2️⃣ Install dependencies (clean install)
 - script: |
     cd pos_frontend
+    npm cache clean --force
     npm install
   displayName: 'Install Angular Dependencies'
 
-# 3️⃣ Install Angular CLI (IMPORTANT FIX)
+# 3️⃣ Debug (VERY IMPORTANT - ek baar run karo)
 - script: |
-    npm install -g @angular/cli
-  displayName: 'Install Angular CLI'
+    cd pos_frontend
+    dir
+    dir node_modules
+  displayName: 'Debug node_modules'
 
-# 3️⃣ Build Angular project
+# 4️⃣ Build Angular (NO global CLI)
 - script: |
     cd pos_frontend
     npx ng build --configuration production
-  displayName: 'Build Angular Project'
+  displayName: 'Build Angular'
 
-# 4️⃣ Publish artifact
-- publish: pos_frontend/dist/pos_frontend
+# 5️⃣ Publish artifact
+- publish: pos_frontend/dist
   artifact: angular_drop
   displayName: 'Publish Angular Build Artifact'
