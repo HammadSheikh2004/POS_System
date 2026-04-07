@@ -19,10 +19,15 @@ steps:
     npm install
   displayName: 'Install Angular Dependencies'
 
+# 3️⃣ Install Angular CLI (IMPORTANT FIX)
+- script: |
+    npm install -g @angular/cli
+  displayName: 'Install Angular CLI'
+
 # 3️⃣ Build Angular project
 - script: |
     cd pos_frontend
-    npm run build --prod
+    npx ng build --configuration production
   displayName: 'Build Angular Project'
 
 # 4️⃣ Publish artifact
