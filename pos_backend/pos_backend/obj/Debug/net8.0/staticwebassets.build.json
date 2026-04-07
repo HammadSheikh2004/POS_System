@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "UFqEeNX3dIa1DJlnQFTrBe18Ce7NDWJh828PI2OB+4k=",
+  "Source": "pos_backend",
+  "BasePath": "_content/pos_backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

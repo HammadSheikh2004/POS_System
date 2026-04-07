@@ -1,0 +1,61 @@
+<div class="card shadow-sm border-none">
+    <div class="card-header text-center">
+        @if(successMessage()){
+        <div class="toast show my-2" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="toast-body">
+                {{ successMessage().toString() }}
+            </div>
+        </div>
+        }
+        <div
+            class="table-responsive">
+            <table
+                class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr. #</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Selling Price</th>
+                        <th scope="col">Cost Price</th>
+                        <th scope="col">Reorder Level</th>
+                        <th scope="col">Quantity In Stock</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(products().length > 0){
+                    @for (item of products(); track $index){
+                    <tr>
+                        <td>{{ item.productId }}</td>
+                        <td>{{ item.productName }}</td>
+                        <td>{{ item.brand.brandName }}</td>
+                        <td>{{ item.unit.unitName }}</td>
+                        <td>{{ item.category.categoryName }}</td>
+                        <td>{{ item.sellingPrice }}</td>
+                        <td>{{ item.costPrice }}</td>
+                        <td>{{ item.reorderLevel }}</td>
+                        <td>{{ item.quantityInStock }}</td>
+                        <td>
+                            <a
+                                [routerLink]="['/admin/inventory/updateproduct', item.productId]"
+                                class="btn btn-warning btn-sm mr-2">Edit</a>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                (click)="DeleteProduct(item.productId)">Delete</button>
+                        </td>
+                    </tr>
+                    }
+                    }@else {
+                    <tr>
+                        <td colspan="10" class="text-center">No Products
+                            Found</td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
