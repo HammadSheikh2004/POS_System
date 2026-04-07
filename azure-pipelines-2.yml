@@ -1,6 +1,11 @@
 trigger:
-- main   # Jab bhi main branch me push ho
-
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - pos_frontend/**
+      
 pool:
   name: pos_agent
 
