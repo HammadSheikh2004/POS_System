@@ -1,0 +1,80 @@
+<app-heading headingTxt="Display Sales" />
+
+<div class="card shadow-md my-2 p-2 border-none">
+    <div class="table-responsive">
+        <table class="table text-center" id="sale_table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Customer Address</th>
+                    <th>Phone Number</th>
+                    <th>Sale Number</th>
+                    <th>Payment Method</th>
+                    <th>Payment Status</th>
+                    <th>Sale Date</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total Price</th>
+                    <th>Amount Pay</th>
+                    <th>Due Pay</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (sale().length > 0) {
+                @for (sale of sale(); track $index) {
+                <tr>
+                    <td>{{ sale.customerName }}</td>
+                    <td>{{ sale.customerAddress }}</td>
+                    <td>{{ sale.customerPhoneNumber }}</td>
+                    <td>{{ sale.saleDateTransferDto.saleNumber }}</td>
+
+                    <td>
+                        @if (sale.saleDateTransferDto.paymentMethod === 0) {
+                        Cash
+                        } @else if (sale.saleDateTransferDto.paymentMethod ===
+                        1) {
+                        Credit Card
+                        } @else if (sale.saleDateTransferDto.paymentMethod ===
+                        2) {
+                        Debit Card
+                        } @else if (sale.saleDateTransferDto.paymentMethod ===
+                        3) {
+                        Online Payment
+                        } @else {
+                        Mobile Payment
+                        }
+                    </td>
+
+                    <td>
+                        @if(sale.saleDateTransferDto.paymentStatus === 0){
+                        Pending
+                        }@else if (sale.saleDateTransferDto.paymentStatus===1) {
+                        Paid
+                        }@else if (sale.saleDateTransferDto.paymentStatus===2) {
+                        Overdue
+                        }@else{
+                        Cancelled
+                        }
+                    </td>
+                    <td>{{ sale.saleDateTransferDto.saleDate | date: 'medium'
+                        }}</td>
+                    <td>{{ sale.saleItemsDto.productId }}</td>
+                    <td>{{ sale.saleItemsDto.quantity }}</td>
+                    <td>{{ sale.saleItemsDto.unitPrice }}</td>
+                    <td>{{ sale.saleItemsDto.totalPrice }}</td>
+                    <td>{{ sale.saleItemsDto.amountPay }}</td>
+                    <td>{{ sale.saleItemsDto.dueAmount }}</td>
+                </tr>
+
+                }
+                } @else {
+                <tr>
+                    <td colspan="11">No sales found</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

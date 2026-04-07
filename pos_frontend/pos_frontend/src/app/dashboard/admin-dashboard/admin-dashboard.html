@@ -1,0 +1,40 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+
+  <div>
+    <canvas class="max-h-[300px]"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType">
+    </canvas>
+  </div>
+
+  <div>
+    <canvas class="max-h-[300px]"
+      baseChart
+      [data]="pieChartData"
+      [options]="pieChartOptions"
+      [type]="'doughnut'">
+    </canvas>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+
+  <app-cards cardTitle="Inventory Management"
+    [icon]="trollyIcon"
+    navigate="/admin/inventory">
+  </app-cards>
+
+  <app-cards cardTitle="Sales Management"
+    [icon]="salesIcon"
+    navigate="/admin/sales">
+  </app-cards>
+
+  <app-cards cardTitle="Customer Management"
+    [icon]="customerIcon"
+    navigate="/admin/customer/mainpage">
+  </app-cards>
+
+</div>

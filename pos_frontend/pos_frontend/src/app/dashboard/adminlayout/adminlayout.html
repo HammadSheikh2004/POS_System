@@ -1,0 +1,79 @@
+<div class="flex">
+
+  @if(sideBarOpen){
+  <div
+    class="fixed inset-0 bg-black/40 z-30 lg:hidden"></div>
+  }
+
+  <!-- Sidebar -->
+  <div
+    class="w-64 bg-blue-600 h-screen shadow-lg shadow-blue-600 fixed z-40 transform transition-transform duration-300 lg:translate-x-0"
+    [ngClass]="sideBarOpen ? 'translate-x-0' : '-translate-x-full'">
+
+    <div class="flex p-4 justify-between items-center border-b">
+      <h3 class="text-2xl text-white font-bold">RetailFlow POS</h3>
+      <button (click)="toggleSidebar()"
+        class="lg:hidden text-2xl text-white font-bold">X</button>
+    </div>
+    <div class="my-2 p-2">
+
+      @for (nav of navItems; track $index) {
+
+      <!-- Main Menu -->
+      <div
+        class="text-white text-medium font-semibold p-2 cursor-pointer hover:bg-blue-700 rounded flex justify-between items-center transition delay-80 duration-300 ease-in-out"
+        (click)="toggleMenu($index)">
+
+        <a
+          [routerLink]="nav.route"
+          (click)="closeSidebar($event)"
+          class="block text-white hover:bg-blue-700 p-2 rounded">
+          {{ nav.name }}
+        </a>
+
+        <!-- Arrow -->
+        @if (nav.subMenu) {
+        <fa-icon
+          class="transition-transform mr-1"
+          [icon]="openMenuIndex === $index ? arrowUp : arrowDown"
+          [class.rotate-180]="openMenuIndex === $index">
+        </fa-icon>
+        }
+
+      </div>
+
+      <!-- Sub Menu -->
+      @if (nav.subMenu && openMenuIndex === $index) {
+      <div class="ml-4 mt-1 space-y-1">
+
+        @for (sub of nav.subMenu; track $index) {
+        <a
+          [routerLink]="sub.route"
+          (click)="closeSidebar($event)"
+          class="block text-white rounded p-2 hover:bg-blue-500 transform transition delay-100 duration-300 ease-in-out">
+          {{ sub.name }}
+        </a>
+        }
+
+      </div>
+      }
+
+      }
+
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="flex-1 flex flex-col lg:ml-64">
+
+    <!-- Header -->
+    <app-header (menuClick)="toggleSidebar()"></app-header>
+
+    <!-- Page Content -->
+    <div class="p-4 flex-1 bg-gray-50 min-h-screen">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+
+</div>

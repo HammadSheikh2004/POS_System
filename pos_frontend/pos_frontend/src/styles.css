@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.primary {
+  color: #2563eb;
+}
+.secondary {
+  color: #1e40af;
+}
+.accent {
+  color: #38bdf8;
+}
+.background {
+  background-color: #f9fafb;
+}
+.text {
+  color: #111827;
+}
+.form-control:hover {
+  border-color: none;
+  box-shadow: none;
+  outline: none;
+}
+.form-control:focus {
+  border-color: none;
+  box-shadow: none;
+  outline: none;
+}
