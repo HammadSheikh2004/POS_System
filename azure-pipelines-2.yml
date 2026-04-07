@@ -1,0 +1,31 @@
+trigger:
+- main   # Jab bhi main branch me push ho
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  node_version: '20.x'
+
+steps:
+# 1️⃣ Install Node
+- task: NodeTool@0
+  inputs:
+    versionSpec: '$(node_version)'
+
+# 2️⃣ Install dependencies
+- script: |
+    cd pos_frontend
+    npm install
+  displayName: 'Install Angular Dependencies'
+
+# 3️⃣ Build Angular project
+- script: |
+    cd pos_frontend
+    npm run build --prod
+  displayName: 'Build Angular Project'
+
+# 4️⃣ Publish artifact
+- publish: pos_frontend/dist/pos_frontend
+  artifact: angular_drop
+  displayName: 'Publish Angular Build Artifact'
