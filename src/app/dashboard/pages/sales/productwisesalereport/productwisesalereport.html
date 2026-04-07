@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col-md-12">
+            <button type="button" (click)="PrintProductWiseSaleReport()">
+                <div class="alert alert-primary" role="alert">
+                    Print Customer Sale History Report.
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container" id="prodcutWiseReportContainer">
+    <div class="row my-2">
+        <div class="col-md-12">
+            <app-heading headingTxt="Print Product Wise Sale Report." />
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-md-12">
+            <div class="card shadow-md border-none p-2">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Product Id</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Total Quantity</th>
+                                <th scope="col">Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (productWiseSaleReport().length > 0) {
+                            @for (item of productWiseSaleReport(); track $index) {
+                            <tr class>
+                                <td scope="row">{{item.productID}}</td>
+                                <td scope="row">{{item.productName}}</td>
+                                <td scope="row">{{item.totalQuantity}}</td>
+                                <td scope="row">{{item.totalRenevue}}</td>
+                            </tr>
+                            }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

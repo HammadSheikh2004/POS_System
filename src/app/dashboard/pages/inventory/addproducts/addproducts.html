@@ -1,0 +1,124 @@
+<div class="container">
+  <app-heading headingTxt="Add Products" />
+
+  <div class="row">
+    <div class="col-md-12">
+      <div
+        class="table-responsive">
+        <form [formGroup]="productForm" (ngSubmit)="submitForm()">
+          <div
+            id="productTable">
+
+            <table
+              class="table rounded-sm shadow-md text-center w-full">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. #</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Selling Price</th>
+                  <th scope="col">Cost Price</th>
+                  <th scope="col">Reorder Level</th>
+                  <th scope="col">Quantity In Stock</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody formArrayName="productRow">
+                @for(ctrl of productRows(); track $index; let i
+                =
+                $index){
+
+                <tr class="tr"
+                  [formGroupName]="i">
+                  <td>{{i+1}}</td>
+                  <td>
+                    <input type="text" class="form-control"
+                      formControlName="productName"
+                      name>
+                  </td>
+
+                  <td>
+                    <input type="text" class="form-control"
+                      formControlName="brandName"
+                      name>
+                  </td>
+
+                  <td>
+                    <input type="text"
+                      class="form-control !w-[50px]"
+                      formControlName="unitName" name>
+                  </td>
+
+                  <td>
+                    <input type="text" class="form-control"
+                      formControlName="categoryName"
+                      name>
+                  </td>
+
+                  <td>
+                    <input type="number"
+                      class="form-control"
+                      formControlName="sellingPrice"
+                      name>
+                  </td>
+
+                  <td>
+                    <input type="number"
+                      class="form-control"
+                      formControlName="costPrice"
+                      name>
+                  </td>
+
+                  <td>
+                    <input type="text" class="form-control"
+                      formControlName="reorderLevel"
+                      name>
+                  </td>
+                  <td>
+                    <input type="text" class="form-control"
+                      formControlName="quantityInStock"
+                      name>
+                  </td>
+
+                  <td>
+                    <div
+                      class="flex justify-content-center align-items-center gap-2">
+                      <button class="btn btn-primary"
+                        type="button"
+                        (click)="addRowProduct($event)">+</button>
+
+                      <button class="btn btn-danger"
+                        type="button"
+                        (click)="DeleteRow(i)">-</button>
+                    </div>
+                  </td>
+
+                </tr>
+                }
+
+              </tbody>
+              <tfoot class="sticky bottom-0" id="tableFooter">
+                <tr>
+                  <td colspan="100%" class="text-right py-3">
+                    <button class="btn btn-primary"
+                      type="submit">Submit</button>
+                  </td>
+                </tr>
+              </tfoot>
+
+            </table>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <app-heading headingTxt="Display Products" />
+    <div class="col-md-12 my-2">
+      <app-displayproducts />
+    </div>
+  </div>
+</div>
