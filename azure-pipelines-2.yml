@@ -2,7 +2,7 @@ trigger:
 - main   # Jab bhi main branch me push ho
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: pos_agent
 
 variables:
   node_version: '20.x'
