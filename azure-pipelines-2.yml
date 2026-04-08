@@ -8,6 +8,7 @@ trigger:
 
 pool:
   name: pos_agent
+  
 
 variables:
   node_version: '20.x'   
