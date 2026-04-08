@@ -7,45 +7,40 @@ trigger:
       - pos_frontend/**
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: pos_agent   # ✅ self-hosted
 
 variables:
   node_version: '20.x'
 
 steps:
 
-# 1️⃣ Install Node
+# 1️⃣ Node install
 - task: UseNode@1
   inputs:
     version: '$(node_version)'
 
-# 2️⃣ Install dependencies (FIXED 🔥)
+# 2️⃣ Install dependencies
 - script: |
     cd pos_frontend
     npm ci
   displayName: 'Install Dependencies'
 
-# 3️⃣ Verify Angular CLI (DEBUG)
-- script: |
-    cd pos_frontend
-    npx ng version
-  displayName: 'Check Angular Version'
-
-# 4️⃣ Build Angular
+# 3️⃣ Build Angular
 - script: |
     cd pos_frontend
     npx ng build --configuration production
   displayName: 'Build Angular'
 
-# 5️⃣ Check dist output
-- script: |
-    cd pos_frontend/dist
-    dir
-  displayName: 'Check dist output'
-
-# 6️⃣ Deploy to Azure
-- task: AzureStaticWebApp@0
+# 4️⃣ Copy dist files
+- task: CopyFiles@2
   inputs:
-    app_location: 'pos_frontend'
-    output_location: 'dist'
-    azure_static_web_apps_api_token: 'da62056080cb4dbcf4538a89b9d4bbfd1e395634b4d572ffc9fae222d65beaf807-d601efc5-1358-4097-9815-577943ffca210001431013a75300'
+    SourceFolder: 'pos_frontend/dist'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# 5️⃣ Deploy to Azure App Service 🚀
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'pos_connection'
+    appName: 'retailflow-pos-app'
+    package: '$(Build.ArtifactStagingDirectory)'
