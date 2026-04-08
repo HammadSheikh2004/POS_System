@@ -34,7 +34,7 @@ steps:
 # 4️⃣ Copy dist files
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'pos_frontend/dist'
+    SourceFolder: 'pos_frontend/dist/pos_frontend'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
