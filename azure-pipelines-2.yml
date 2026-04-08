@@ -14,38 +14,36 @@ variables:
 
 steps:
 
-# 1️⃣ Install Node (FIXED)
+# 1️⃣ Install Node
 - task: UseNode@1
   inputs:
     version: '$(node_version)'
 
-# 2️⃣ Clean install dependencies (FIXED)
+# 2️⃣ Install dependencies (FIXED 🔥)
 - script: |
     cd pos_frontend
+    npm ci
+  displayName: 'Install Dependencies'
 
-    echo Cleaning old files...
-    rmdir /s /q node_modules
-    del package-lock.json
+# 3️⃣ Verify Angular CLI (DEBUG)
+- script: |
+    cd pos_frontend
+    npx ng version
+  displayName: 'Check Angular Version'
 
-    npm cache clean --force
-
-    echo Installing dependencies...
-    npm install
-  displayName: 'Clean Install Dependencies'
-
-# 3️⃣ Build Angular
+# 4️⃣ Build Angular
 - script: |
     cd pos_frontend
     npx ng build --configuration production
   displayName: 'Build Angular'
 
-# 4️⃣ Check dist folder (DEBUG)
+# 5️⃣ Check dist output
 - script: |
     cd pos_frontend/dist
     dir
   displayName: 'Check dist output'
 
-# 5️⃣ Deploy to Azure (FIXED 🔥)
+# 6️⃣ Deploy to Azure
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'pos_connection'
