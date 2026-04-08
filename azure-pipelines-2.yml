@@ -22,9 +22,8 @@ steps:
 # 2️⃣ Install dependencies (clean install)
 - script: |
     cd pos_frontend
-    npm cache clean --force
-    npm install
-  displayName: 'Install Angular Dependencies'
+    npm ci
+  displayName: 'Install Dependencies'
 
 # 3️⃣ Debug (VERY IMPORTANT - ek baar run karo)
 - script: |
