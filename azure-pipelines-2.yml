@@ -8,44 +8,46 @@ trigger:
 
 pool:
   name: pos_agent
-  
 
 variables:
-  node_version: '20.x'   
+  node_version: '20.x'
 
 steps:
 
-# 1️⃣ Install Node
-- task: NodeTool@1
+# 1️⃣ Install Node (FIXED)
+- task: UseNode@1
   inputs:
-    versionSpec: '$(node_version)'
+    version: '$(node_version)'
 
-# 2️⃣ Install dependencies (clean install)
+# 2️⃣ Clean install dependencies (FIXED)
 - script: |
     cd pos_frontend
-    npm ci
-  displayName: 'Install Dependencies'
 
-# 3️⃣ Debug (VERY IMPORTANT - ek baar run karo)
-- script: |
-    cd pos_frontend
-    dir
-    dir node_modules
-  displayName: 'Debug node_modules'
+    echo Cleaning old files...
+    rmdir /s /q node_modules
+    del package-lock.json
 
-# 4️⃣ Build Angular (NO global CLI)
+    npm cache clean --force
+
+    echo Installing dependencies...
+    npm install
+  displayName: 'Clean Install Dependencies'
+
+# 3️⃣ Build Angular
 - script: |
     cd pos_frontend
     npx ng build --configuration production
   displayName: 'Build Angular'
 
-# 5️⃣ Publish artifact
-- publish: pos_frontend/dist
-  artifact: angular_drop
-  displayName: 'Publish Angular Build Artifact'
+# 4️⃣ Check dist folder (DEBUG)
+- script: |
+    cd pos_frontend/dist
+    dir
+  displayName: 'Check dist output'
 
+# 5️⃣ Deploy to Azure (FIXED 🔥)
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'pos_connection'
     appName: 'retailflow-pos'
-    package: 'pos_frontend/dist'  
+    package: 'pos_frontend/dist/*'
