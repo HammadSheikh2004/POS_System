@@ -15,7 +15,7 @@ variables:
 steps:
 
 # 1️⃣ Install Node
-- task: NodeTool@0
+- task: NodeTool@1
   inputs:
     versionSpec: '$(node_version)'
 
@@ -42,3 +42,9 @@ steps:
 - publish: pos_frontend/dist
   artifact: angular_drop
   displayName: 'Publish Angular Build Artifact'
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'pos_connection'
+    appName: 'retailflow-pos'
+    package: 'pos_frontend/dist'  
