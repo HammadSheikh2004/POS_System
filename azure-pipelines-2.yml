@@ -44,8 +44,8 @@ steps:
   displayName: 'Check dist output'
 
 # 6️⃣ Deploy to Azure
-- task: AzureWebApp@1
+- task: AzureStaticWebApp@0
   inputs:
-    azureSubscription: 'pos_connection'
-    appName: 'retailflow-pos'
-    package: 'pos_frontend/dist/*'
+    app_location: 'pos_frontend'
+    output_location: 'dist'
+    azure_static_web_apps_api_token: 'da62056080cb4dbcf4538a89b9d4bbfd1e395634b4d572ffc9fae222d65beaf807-d601efc5-1358-4097-9815-577943ffca210001431013a75300'
