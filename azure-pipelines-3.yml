@@ -13,7 +13,7 @@ pool:
 
 variables:
   node_version: '22.x'
-  app_name: '$(app_name)'
+  app_name: '$(retailflow-pos-app)'
 
 steps:
 
