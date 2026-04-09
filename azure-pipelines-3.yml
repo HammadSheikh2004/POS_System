@@ -12,7 +12,7 @@ pool:
   name: pos_agent
 
 variables:
-  node_version: '20.x'
+  node_version: '22.x'
   app_name: 'retailflow-pos-app'
 
 steps:
