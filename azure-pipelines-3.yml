@@ -17,7 +17,7 @@ variables:
 
 steps:
 
-- task: NodeTool@0
+- task: NodeTool@1
   inputs:
     versionSpec: '$(node_version)'
   displayName: 'Install Node.js'
@@ -34,7 +34,7 @@ steps:
   displayName: 'Build Angular App'
 
 - script: |
-    cp pos_frontend/web.config pos_frontend/dist/*/
+    copy pos_frontend\web.config pos_frontend\dist\*\web.config
   displayName: 'Copy web.config'
 
 - task: ArchiveFiles@2
