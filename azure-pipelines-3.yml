@@ -13,7 +13,7 @@ pool:
 
 variables:
   node_version: '22.x'
-  app_name: '$(retailflow-pos-app)'
+  app_name: 'retailflow-pos-app'
 
 steps:
 
@@ -41,7 +41,7 @@ steps:
   displayName: 'Build Angular App'
 
 - script: |
-    copy pos_frontend/src/web.config pos_frontend/dist/browser/web.config
+    copy pos_frontend\src\web.config pos_frontend\dist\browser\web.config
   displayName: 'Copy web.config'
 
 - task: ArchiveFiles@2
@@ -62,6 +62,6 @@ steps:
 - task: AzureWebApp@1
   inputs:
     azureSubscription: 'pos_connection'
-    appName: '$(retailflow-pos-app)'
+    appName: '$(app_name)'
     package: '$(Build.ArtifactStagingDirectory)/app.zip'
   displayName: 'Deploy to Azure'
