@@ -46,7 +46,7 @@ steps:
 
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'pos_frontend/dist'
+    rootFolderOrFile: 'pos_frontend/dist/browser'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/app.zip'
