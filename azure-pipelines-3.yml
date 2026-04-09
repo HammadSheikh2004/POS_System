@@ -17,11 +17,18 @@ variables:
 
 steps:
 
-- task: NodeTool@1
+- task: NodeTool@0
   inputs:
-    versionSpec: '$(node_version)'
+    versionSpec: '22.x'
   displayName: 'Install Node.js'
 
+- script: |
+    echo AFTER INSTALL:
+    node -v
+    where node
+  displayName: 'Check Node After Install'
+
+  
 - script: |
     cd pos_frontend
     npm install -g @angular/cli
