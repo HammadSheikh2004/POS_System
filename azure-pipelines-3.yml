@@ -41,7 +41,7 @@ steps:
   displayName: 'Build Angular App'
 
 - script: |
-    copy pos_frontend\web.config pos_frontend\dist\*\web.config
+    copy pos_frontend/src/web.config pos_frontend/dist/browser/web.config
   displayName: 'Copy web.config'
 
 - task: ArchiveFiles@2
