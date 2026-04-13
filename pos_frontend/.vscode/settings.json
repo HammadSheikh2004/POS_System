@@ -3,4 +3,6 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/3e106156-62e6-4695-a4c9-ab21ab8be451/resourceGroups/POS_System/providers/Microsoft.Web/sites/retailflow-pos-app",
+    "appService.deploySubpath": "dist",
 }
