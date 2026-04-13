@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment.production';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -71,4 +70,5 @@ export class Inventoryservice {
       },
     });
   }
+
 }

@@ -25,7 +25,7 @@ export class SaleService {
 
   CustomerSaleReport(): Observable<any[]> {
     return this.http.get<any[]>(
-      `${this.apiUrl}/Sale/CustomerSaleHistoryReport`,
+      `${this.apiUrl}/Sale/CustomerSaleHistoryReport`
     );
   }
 
@@ -35,7 +35,7 @@ export class SaleService {
 
   TodaySaleReport(today_date: string): Observable<any> {
     return this.http.get<any>(
-      `${this.apiUrl}/Sale/TodaySaleReport/${today_date}`,
+      `${this.apiUrl}/Sale/TodaySaleReport/${today_date}`
     );
   }
 
