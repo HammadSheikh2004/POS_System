@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|c:\\users\\muhammad hammad\\pictures\\pos_system\\pos_backend\\pos_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|solutionrelative:pos_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|c:\\users\\muhammad hammad\\pictures\\pos_system\\pos_backend\\pos_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|solutionrelative:pos_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|c:\\users\\muhammad hammad\\pictures\\pos_system\\pos_backend\\pos_backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|solutionrelative:pos_backend\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|c:\\users\\muhammad hammad\\pictures\\pos_system\\pos_backend\\pos_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|solutionrelative:pos_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8F30D292-006D-42E0-B1AB-B2DAB203CB01}|pos_backend\\pos_backend.csproj|c:\\users\\muhammad hammad\\pictures\\pos_system\\pos_backend\\pos_backend\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,7 +34,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\pos_backend\\appsettings.Development.json",
               "RelativeDocumentMoniker": "pos_backend\\appsettings.Development.json",
@@ -42,25 +42,24 @@
               "RelativeToolTip": "pos_backend\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-28T20:10:05.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-28T20:10:05.127Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\pos_backend\\appsettings.json",
               "RelativeDocumentMoniker": "pos_backend\\appsettings.json",
               "ToolTip": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\pos_backend\\appsettings.json",
               "RelativeToolTip": "pos_backend\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-19T07:02:03.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\muhammad hammad\\Pictures\\POS_System\\pos_backend\\pos_backend\\Program.cs",
               "RelativeDocumentMoniker": "pos_backend\\Program.cs",
